@@ -8,7 +8,7 @@ export const config = {
   siteName: 'installs.io',
   domain: 'https://installs.io', // no trailing slash
   tagline: 'Install any tool on your stack in minutes.',
-  supportEmail: 'TODO-your-email@example.com', // TODO: replace
+  supportEmail: 'partnership@hieing.com', // TODO: replace
   dateLocale: 'en-US', // how dates are shown, e.g. "November 12, 2026"
 
   // ---------------- The $149 Express Install ----------------
@@ -54,11 +54,11 @@ export const config = {
   badges: {
     moneyBackGuarantee: {
       enabled: false,
-      text: 'TODO: write your exact guarantee wording',
+      text: '100% money-back guarantee if we cannot complete your installation',
     },
     testedBadge: {
       enabled: false,
-      text: 'TODO: e.g. "Steps checked against vendor docs"',
+      text: 'Tested and verified live before handoff with video or screenshot proof',
     },
   },
 
@@ -66,15 +66,15 @@ export const config = {
   service: {
     // These are DRAFT wording. Edit so they match what you will really do.
     refundPolicy:
-      'If we are unable to complete your installation, we will refund your payment in full. (TODO: confirm this is the policy you will honor, and add any limits.)',
+      'If we are unable to complete your installation, we will refund your payment in full. (If we are unable to complete your installation within 24 hours of receiving valid collaborator access, we will issue a full 100% refund. Once installation and verification proof are delivered, sales are final.)',
     scope:
-      'One tool installed and configured on one site or store, plus a test to confirm it is working. (TODO: confirm exactly what is and is not included.)',
+      'One tool installed and configured on one site or store, plus a test to confirm it is working. (Installation and configuration of one selected tool on one website or store, plus live verification testing to confirm events or widgets work properly.)',
     outOfScope:
-      'Custom development, redesigns, ongoing management, ad campaigns, and fixing problems that existed before we started. (TODO: confirm.)',
+      'Custom development, redesigns, ongoing management, ad campaigns, and fixing problems that existed before we started. (Custom theme redesigns, custom software development, third-party SaaS subscription fees, or fixing pre-existing broken plugins unrelated to the installation.)',
     accessMethods:
       'A collaborator or staff account with only the permissions needed for the job. We will never ask for your main account password.',
     revisions:
-      'If something does not work as described after delivery, tell us and we will fix it at no extra cost for 7 days. (TODO: confirm the number of days.)',
+      'If something does not work as described after delivery, tell us and we will fix it at no extra cost for 7 days. (Includes 7 days of free post-delivery support. If anything stops working as configured within 7 days of handoff, we will fix it at no extra charge.)',
   },
 
   // ---------------- Legal (have a lawyer review before launch) ----------------
@@ -82,8 +82,8 @@ export const config = {
     affiliateDisclosure:
       'We may earn a commission if you sign up through links on this site, at no extra cost to you.',
     companyName: 'SpeedLane Digitals',
-    country: 'TODO: your country / governing law',
-    lastUpdated: 'TODO: date you finalised these pages',
+    country: 'United States',
+    lastUpdated: '2026-11-13',
   },
 };
 
