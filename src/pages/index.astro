@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+import Configurator from '../components/Configurator.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CreditCard from '@lucide/astro/icons/credit-card';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import Rocket from '@lucide/astro/icons/rocket';
+import Check from '@lucide/astro/icons/check';
+import ChevronRight from '@lucide/astro/icons/chevron-right';
+import { config, isTodo } from '../config';
+import { toolCategories } from '../data/types';
+import { activeTools, guidesForTool, guideUrl, toolUrl, platformById, expressHref, absoluteUrl } from '../lib/site';
+
+const categories = toolCategories
+  .map((name) => ({ name, tools: activeTools.filter((t) => t.category === name) }))
+  .filter((c) => c.tools.length > 0);
+
+const steps = [
+  { icon: CreditCard, title: '1. Pay', body: `Check out securely. The price is a flat $${config.express.priceUsd}, one time.` },
+  { icon: ShieldCheck, title: '2. Share access safely', body: 'You tell us which tool and site, and add us as a collaborator. We never need your main password.' },
+  { icon: Rocket, title: '3. We install and verify', body: `We set it up, test it, and send you proof it works ${config.express.turnaroundText}.` },
+];
+
+const faqs = [
+  { q: 'Is it safe to give you access?', a: config.service.accessMethods },
+  { q: "What's included?", a: config.service.scope },
+  { q: 'What if you cannot complete it?', a: config.service.revisions },
+  { q: 'Can I get a refund?', a: config.service.refundPolicy },
+];
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: config.siteName,
+  url: absoluteUrl('/'),
+};
+---
+
+<Base
+  title={`${config.siteName}: Step-by-Step SaaS & MarTech Install Guides`}
+  description="Plain-English, step-by-step guides for installing tools like Klaviyo, GA4 and Meta Conversions API on Shopify, Webflow and WordPress. Or let us do it for you."
+  jsonLd={[orgLd]}
+>
+  <main id="main" class="flex-1">
+    <!-- Hero -->
+    <section class="bg-gradient-to-b from-indigo-50 via-white to-white">
+      <div class="mx-auto max-w-4xl px-4 pb-10 pt-14 text-center sm:pt-20">
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{config.tagline}</h1>
+        <p class="mx-auto mt-5 max-w-2xl text-lg text-slate-600">
+          Clear step-by-step guides for adding analytics, email, chat and ad tracking to your site. Prefer to skip the work? Our expert Express Install gets it done {config.express.turnaroundText}.
+        </p>
+        <ul class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-700">
+          {
+            config.trustSignals.map((t) => (
+              <li class="flex items-center gap-1.5">
+                <Check size={16} class="text-emerald-600" aria-hidden="true" /> {t}
+              </li>
+            ))
+          }
+        </ul>
+        {
+          config.badges.testedBadge.enabled && (
+            <p class="mx-auto mt-4 inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
+              {config.badges.testedBadge.text}
+            </p>
+          )
+        }
+        <div class="mx-auto mt-8 max-w-3xl text-left">
+          <Configurator />
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular integrations -->
+    <section class="mx-auto max-w-6xl px-4 py-12" aria-labelledby="popular-heading">
+      <h2 id="popular-heading" class="text-2xl font-bold text-slate-900">Popular integrations</h2>
+      {
+        categories.length === 0 ? (
+          <p class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700">
+            Our first guides are being checked against each vendor's current documentation. Use the form above to tell us which one you need.
+          </p>
+        ) : (
+          <div class="mt-6 space-y-10">
+            {categories.map((cat) => (
+              <div>
+                <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">{cat.name}</h3>
+                <div class="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {cat.tools.map((tool) => (
+                    <div class="rounded-xl border border-slate-200 bg-white p-4">
+                      <a href={toolUrl(tool.slug)} class="flex items-center gap-3">
+                        <img src={tool.logo} alt="" width="36" height="36" class="h-9 w-9 rounded-md" />
+                        <span>
+                          <span class="block font-semibold text-slate-900 hover:text-indigo-700">{tool.name}</span>
+                          <span class="block text-sm text-slate-600">{tool.shortDescription}</span>
+                        </span>
+                      </a>
+                      <ul class="mt-3 flex flex-wrap gap-2">
+                        {guidesForTool(tool.id).map((g) => (
+                          <li>
+                            <a href={guideUrl(g.slug)} class="inline-flex items-center rounded-full border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-700 hover:border-indigo-300 hover:text-indigo-700">
+                              on {platformById(g.platformId).name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </section>
+
+    <!-- Express setup -->
+    <section id="express" class="bg-slate-50 py-14" aria-labelledby="express-how-heading">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 id="express-how-heading" class="text-center text-2xl font-bold text-slate-900">
+          How the ${config.express.priceUsd} Express Setup works
+        </h2>
+        <ol class="mt-8 grid gap-6 md:grid-cols-3">
+          {
+            steps.map((s) => (
+              <li class="rounded-xl border border-slate-200 bg-white p-5">
+                <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 text-indigo-700">
+                  <s.icon size={22} aria-hidden="true" />
+                </span>
+                <h3 class="mt-3 font-semibold text-slate-900">{s.title}</h3>
+                <p class="mt-1 text-sm text-slate-600">{s.body}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="mt-8 text-center">
+          {
+            expressHref ? (
+              <a href={expressHref} class="inline-flex items-center gap-1 rounded-md bg-indigo-600 px-6 py-3 font-semibold text-white shadow-sm hover:bg-indigo-700">
+                Get Express Install: ${config.express.priceUsd} <ChevronRight size={18} aria-hidden="true" />
+              </a>
+            ) : (
+              <span aria-disabled="true" class="inline-block cursor-not-allowed rounded-md bg-slate-300 px-6 py-3 font-semibold text-slate-600">
+                Express Install: payment link not set up yet
+              </span>
+            )
+          }
+        </div>
+
+        <div class="mx-auto mt-12 max-w-3xl">
+          <h3 class="text-lg font-bold text-slate-900">Express Setup questions</h3>
+          <div class="mt-4 divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white">
+            {
+              faqs.map((f) => (
+                <details class="faq p-4">
+                  <summary class="flex items-center justify-between gap-3 font-medium text-slate-900">
+                    {f.q}
+                    <ChevronRight size={18} class="faq-chevron shrink-0 transition-transform" aria-hidden="true" />
+                  </summary>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Full details are on the <a href="/service-terms/" class="underline">service terms</a> page.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Request -->
+    <section class="mx-auto max-w-3xl px-4 py-14" aria-labelledby="request-heading">
+      <h2 id="request-heading" class="text-2xl font-bold text-slate-900">Don't see your tool or platform?</h2>
+      <p class="mt-2 text-slate-600">Tell us which install guide you need. The most requested guides get written first.</p>
+      <div class="mt-5 max-w-md">
+        <LeadForm
+          formType="Guide request (homepage footer)"
+          button="Request a guide"
+          successMessage="Thanks! We will email you when this guide is ready."
+          fields={[
+            { name: 'requested_combo', label: 'Which tool on which platform?', required: true, placeholder: 'e.g. Klaviyo on Squarespace' },
+            { name: 'email', label: 'Your email', type: 'email', required: true },
+          ]}
+        />
+      </div>
+    </section>
+  </main>
+</Base>

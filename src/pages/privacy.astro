@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { config } from '../config';
+---
+
+<Base title="Privacy Policy" description="How installs.io handles your information: the forms you submit, analytics, affiliate links and payments.">
+  <main id="main" class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Privacy' }]} />
+    <h1 class="mt-6 text-3xl font-extrabold text-slate-900">Privacy Policy</h1>
+    <div class="prose-lite text-slate-700">
+      <p>This is a starting-point template written in plain language. Have a qualified professional review and adapt it to your business and country before launch.</p>
+      <p class="text-sm text-slate-500">Last updated: {config.legal.lastUpdated}. Operated by {config.legal.companyName}.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Forms:</strong> when you submit a form (guide request, update alert, partner application, Express Install details) we receive what you type, such as your email address, site address and notes.</li>
+        <li><strong>Payments:</strong> payments are handled by our payment provider ({config.express.paymentProvider}). We receive confirmation and your contact details but not your full card number.</li>
+        <li><strong>Analytics:</strong> we use Cloudflare Web Analytics to see page visits. It is designed to measure traffic without using cookies to track individuals.</li>
+        <li><strong>Browser storage:</strong> checklist ticks on a guide are saved in your own browser and are never sent to us.</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To reply to you, deliver the service you paid for and let you know when a guide is ready or changed</li>
+        <li>To decide which guides to write next</li>
+        <li>To keep the site secure and working</li>
+      </ul>
+
+      <h2>Who else sees it</h2>
+      <p>We use service providers to run the site: Cloudflare (hosting and analytics), Web3Forms (form delivery) and {config.express.paymentProvider} (payments). They process data on our behalf under their own policies. We do not sell your personal information.</p>
+
+      <h2>Affiliate links</h2>
+      <p>{config.legal.affiliateDisclosure} If you click such a link, the other company may set its own cookies and has its own privacy policy.</p>
+
+      <h2>Your choices</h2>
+      <p>You can ask us to see, correct or delete the information we hold about you by emailing {config.supportEmail}. Governing law: {config.legal.country}.</p>
+    </div>
+  </main>
+</Base>

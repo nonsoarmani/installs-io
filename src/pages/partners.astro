@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { platforms } from '../data/platforms';
+---
+
+<Base title="Become a Verified Installer" description="Agencies and freelancers: apply to be the recommended setup partner on install guides for your platform and reach people who need hands-on help.">
+  <main id="main" class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Partners' }]} />
+    <h1 class="mt-6 text-3xl font-extrabold text-slate-900">Become a Verified Installer</h1>
+    <div class="prose-lite text-slate-700">
+      <p>
+        Many people who read our guides decide they would rather hand the job to an expert. Verified Installers are
+        featured as the "Recommended Setup Partner" next to our guides for the platform they specialise in, and these
+        placements are clearly labelled as sponsored.
+      </p>
+      <h2>Who it is for</h2>
+      <ul>
+        <li>Agencies and freelancers who install and configure marketing, analytics or support tools</li>
+        <li>People who can show real, recent client work on the platform they apply for</li>
+        <li>Teams that reply to enquiries quickly and treat client accounts with care</li>
+      </ul>
+      <h2>How it works</h2>
+      <p>Send us the form below. We will review it and reply by email with availability, details and pricing for the placement. Submitting this form does not guarantee a placement and costs nothing.</p>
+    </div>
+    <div class="mt-8 max-w-lg">
+      <LeadForm
+        formType="Partner application"
+        button="Apply"
+        successMessage="Thanks! We will review your application and reply by email."
+        fields={[
+          { name: 'company', label: 'Company or your name', required: true },
+          { name: 'website', label: 'Website', type: 'url', required: true, placeholder: 'https://' },
+          { name: 'email', label: 'Contact email', type: 'email', required: true },
+          { name: 'platform', label: 'Main platform you work on', type: 'select', required: true, options: platforms.map((p) => p.name).concat(['Other']) },
+          { name: 'about', label: 'Tell us about your work', type: 'textarea', required: true, help: 'Which tools you install, how long you have done it, and a link to examples if you have them.' },
+        ]}
+      />
+    </div>
+  </main>
+</Base>

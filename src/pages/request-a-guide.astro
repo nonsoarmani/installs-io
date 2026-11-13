@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import LeadForm from '../components/LeadForm.astro';
+---
+
+<Base title="Request an Install Guide" description="Tell us which tool and platform you need an install guide for. The most requested guides get written first.">
+  <main id="main" class="mx-auto w-full max-w-2xl flex-1 px-4 py-8">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Request a guide' }]} />
+    <h1 class="mt-6 text-3xl font-extrabold text-slate-900">Request an install guide</h1>
+    <p class="mt-2 text-slate-600">Tell us which tool you want to install and where. We read every request and write the most requested guides first. Leave your email and we will tell you when it is ready.</p>
+    <div class="mt-6">
+      <LeadForm
+        formType="Guide request"
+        button="Send request"
+        successMessage="Thanks! We will email you when this guide is ready."
+        fields={[
+          { name: 'tool', label: 'Tool you want to install', required: true, placeholder: 'e.g. HubSpot' },
+          { name: 'platform', label: 'Platform your site runs on', required: true, placeholder: 'e.g. Squarespace' },
+          { name: 'email', label: 'Your email', type: 'email', required: true },
+          { name: 'notes', label: 'Anything else we should know? (optional)', type: 'textarea' },
+        ]}
+      />
+    </div>
+  </main>
+</Base>

@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { config } from '../config';
+import { platforms } from '../data/platforms';
+import { tools } from '../data/tools';
+---
+
+<Base title="Thank You: Next Steps" description="Your Express Install is booked. Fill in the quick form so we can start." noindex>
+  <main id="main" class="mx-auto w-full max-w-3xl flex-1 px-4 py-10">
+    <h1 class="text-3xl font-extrabold text-slate-900">Thank you! Here is what happens next</h1>
+    <p class="mt-3 text-slate-700">
+      Your payment went through. Please fill in the form below so we know what to install and where. Our {config.express.turnaroundText} timer starts when we have what we need from you.
+    </p>
+
+    <section class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5" aria-labelledby="safe-heading">
+      <h2 id="safe-heading" class="text-lg font-bold text-emerald-900">How to share access safely</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-emerald-900">
+        <li>Invite us as a <strong>collaborator or staff member</strong> with only the permissions needed. Do not send your owner login.</li>
+        <li><strong>Never</strong> send your main account password by email or in this form.</li>
+        <li>Use the email address from this page's form when you send the invitation: <strong>{config.supportEmail.includes('TODO') ? 'TODO: your support email' : config.supportEmail}</strong>.</li>
+        <li>When we finish, you can remove our access at any time.</li>
+      </ul>
+      <p class="mt-3 text-sm text-emerald-900">{config.service.accessMethods}</p>
+    </section>
+
+    <section class="mt-8" aria-labelledby="intake-heading">
+      <h2 id="intake-heading" class="text-xl font-bold text-slate-900">Tell us about your install</h2>
+      <div class="mt-4 max-w-xl">
+        <LeadForm
+          formType="Express Install intake"
+          button="Send details"
+          successMessage="Thank you! We have your details and will be in touch shortly."
+          fields={[
+            { name: 'name', label: 'Your name', required: true },
+            { name: 'email', label: 'Email you paid with', type: 'email', required: true },
+            { name: 'site_url', label: 'Your store or site address', type: 'url', required: true, placeholder: 'https://' },
+            { name: 'platform', label: 'Platform', type: 'select', required: true, options: platforms.map((p) => p.name).concat(['Other']) },
+            { name: 'tool', label: 'Which tool should we install?', type: 'select', required: true, options: tools.map((t) => t.name).concat(['Other']) },
+            { name: 'access', label: 'What access will you give us?', type: 'select', required: true, options: ['Collaborator / staff invite', 'Shared via the tool\'s own invite system', 'Not sure yet, please advise'] },
+            { name: 'notes', label: 'Anything we should know?', type: 'textarea', help: 'For example: where you want it to appear, other tools already installed, deadlines.' },
+          ]}
+        />
+      </div>
+    </section>
+    <p class="mt-8 text-sm text-slate-600">Questions about scope or refunds? See the <a href="/service-terms/" class="underline">service terms</a>.</p>
+  </main>
+</Base>

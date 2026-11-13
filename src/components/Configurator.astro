@@ -1,0 +1,84 @@
+---
+import LeadForm from './LeadForm.astro';
+import { tools } from '../data/tools';
+import { platforms } from '../data/platforms';
+import { visibleGuides, guideUrl } from '../lib/site';
+
+// Every real combination: [toolId, platformId, url]
+const combos = visibleGuides.map((g) => [g.toolId, g.platformId, guideUrl(g.slug)]);
+---
+
+<section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-lg sm:p-6" aria-labelledby="configurator-heading" data-combos={JSON.stringify(combos)} id="configurator">
+  <h2 id="configurator-heading" class="text-lg font-bold text-slate-900">Find your install guide</h2>
+  <form id="configurator-form" class="mt-4 grid gap-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+    <div>
+      <label for="cfg-tool" class="block text-sm font-medium text-slate-800">I want to install...</label>
+      <select id="cfg-tool" class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm shadow-sm">
+        {tools.map((t) => <option value={t.id}>{t.name}</option>)}
+      </select>
+    </div>
+    <div>
+      <label for="cfg-platform" class="block text-sm font-medium text-slate-800">On my platform...</label>
+      <select id="cfg-platform" class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm shadow-sm">
+        {platforms.map((p) => <option value={p.id}>{p.name}</option>)}
+      </select>
+    </div>
+    <button type="submit" class="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700">
+      Generate Install Guide
+    </button>
+  </form>
+
+  <div id="cfg-missing" hidden class="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4" role="status">
+    <p class="font-semibold text-amber-900">We don't have <span id="cfg-missing-label"></span> yet.</p>
+    <p class="mt-1 text-sm text-amber-900">Tell us where to send it and we will let you know when it is ready. You also help us decide which guides to write next.</p>
+    <div class="mt-4 max-w-md">
+      <LeadForm
+        id="cfg-request-form"
+        formType="Guide request (homepage)"
+        button="Request this guide"
+        successMessage="Thanks! We will email you when this guide is ready."
+        fields={[
+          { name: 'requested_combo', label: 'Requested guide', type: 'text', required: true },
+          { name: 'email', label: 'Your email', type: 'email', required: true, placeholder: 'you@company.com' },
+        ]}
+      />
+    </div>
+  </div>
+
+  <noscript>
+    <p class="mt-4 text-sm text-slate-600">
+      JavaScript is off. Browse by <a class="underline" href="/tools/">tool</a> or by <a class="underline" href="/platforms/">platform</a> instead.
+    </p>
+  </noscript>
+</section>
+
+<script>
+  const root = document.getElementById('configurator');
+  const form = document.getElementById('configurator-form') as HTMLFormElement | null;
+  if (root && form) {
+    const combos: [string, string, string][] = JSON.parse(root.dataset.combos ?? '[]');
+    const toolSel = document.getElementById('cfg-tool') as HTMLSelectElement;
+    const platSel = document.getElementById('cfg-platform') as HTMLSelectElement;
+    const missing = document.getElementById('cfg-missing') as HTMLElement;
+    const label = document.getElementById('cfg-missing-label') as HTMLElement;
+    const requestField = document.querySelector<HTMLInputElement>('#cfg-request-form [name="requested_combo"]');
+
+    const hideMissing = () => (missing.hidden = true);
+    toolSel.addEventListener('change', hideMissing);
+    platSel.addEventListener('change', hideMissing);
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const match = combos.find(([t, p]) => t === toolSel.value && p === platSel.value);
+      if (match) {
+        window.location.href = match[2];
+        return;
+      }
+      const text = `${toolSel.selectedOptions[0].text} on ${platSel.selectedOptions[0].text}`;
+      label.textContent = text;
+      if (requestField) requestField.value = text;
+      missing.hidden = false;
+      missing.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+</script>

@@ -1,0 +1,36 @@
+---
+import Check from '@lucide/astro/icons/check';
+import Menu from '@lucide/astro/icons/menu';
+import { config } from '../config';
+
+const links = [
+  { href: '/platforms/', label: 'Platforms' },
+  { href: '/tools/', label: 'Tools' },
+  { href: '/#express', label: 'Express Install' },
+  { href: '/request-a-guide/', label: 'Request a guide' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold text-slate-900">
+      <span class="flex h-7 w-7 items-center justify-center rounded-md bg-indigo-600 text-white">
+        <Check size={18} strokeWidth={3} aria-hidden="true" />
+      </span>
+      {config.siteName}
+    </a>
+
+    <nav aria-label="Main" class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
+      {links.map((l) => <a href={l.href} class="hover:text-slate-900">{l.label}</a>)}
+    </nav>
+
+    <details class="relative md:hidden">
+      <summary class="flex cursor-pointer list-none items-center gap-1 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium [&::-webkit-details-marker]:hidden">
+        <Menu size={16} aria-hidden="true" /> Menu
+      </summary>
+      <nav aria-label="Mobile" class="absolute right-0 mt-2 w-56 rounded-lg border border-slate-200 bg-white p-2 shadow-lg">
+        {links.map((l) => <a href={l.href} class="block rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-slate-100">{l.label}</a>)}
+      </nav>
+    </details>
+  </div>
+</header>

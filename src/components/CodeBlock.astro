@@ -1,0 +1,49 @@
+---
+import { Code } from 'astro:components';
+import Copy from '@lucide/astro/icons/copy';
+import type { CodeBlock } from '../data/types';
+
+interface Props {
+  block: CodeBlock;
+}
+const { block } = Astro.props;
+---
+
+<div class="code-block mt-4 overflow-hidden rounded-lg border border-slate-200" data-code={block.code}>
+  <div class="flex items-center justify-between gap-3 border-b border-slate-200 bg-slate-100 px-3 py-2 text-xs">
+    <span class="truncate font-mono text-slate-600">{block.filename ?? block.language}</span>
+    <button
+      type="button"
+      class="copy-btn flex shrink-0 items-center gap-1 rounded-md border border-slate-300 bg-white px-2 py-1 font-medium text-slate-700 hover:bg-slate-50"
+    >
+      <Copy size={14} aria-hidden="true" />
+      <span class="copy-label">Copy</span>
+    </button>
+  </div>
+  <Code code={block.code} lang={block.language} theme="github-light" wrap />
+</div>
+
+<script>
+  // Copy-to-clipboard for every code block on the page. Tiny, no libraries.
+  document.addEventListener('click', async (event) => {
+    const btn = (event.target as HTMLElement).closest('.copy-btn');
+    if (!btn) return;
+    const box = btn.closest('.code-block') as HTMLElement | null;
+    const label = btn.querySelector('.copy-label');
+    const text = box?.dataset.code ?? '';
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const area = document.createElement('textarea');
+      area.value = text;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
+    }
+    if (label) {
+      label.textContent = 'Copied!';
+      setTimeout(() => (label.textContent = 'Copy'), 2000);
+    }
+  });
+</script>

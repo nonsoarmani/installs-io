@@ -1,0 +1,22 @@
+---
+import { config } from '../config';
+import { expressHref } from '../lib/site';
+---
+
+<div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] backdrop-blur lg:hidden">
+  <div class="mx-auto flex max-w-xl items-center justify-between gap-3">
+    <div class="text-sm leading-tight">
+      <p class="font-semibold text-slate-900">Want us to do it?</p>
+      <p class="text-slate-600">{config.express.productName} ${config.express.priceUsd}</p>
+    </div>
+    {
+      expressHref ? (
+        <a href={expressHref} class="rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700">
+          Get it done for me
+        </a>
+      ) : (
+        <span aria-disabled="true" class="rounded-md bg-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600">Coming soon</span>
+      )
+    }
+  </div>
+</div>

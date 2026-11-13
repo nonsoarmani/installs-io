@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { config } from '../config';
+---
+
+<Base title="Express Install Service Terms" description="Plain-language terms for the Express Install service: what is included, how we handle access and security, and our refund policy.">
+  <main id="main" class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Service terms' }]} />
+    <h1 class="mt-6 text-3xl font-extrabold text-slate-900">Express Install: Service terms</h1>
+    <div class="prose-lite text-slate-700">
+      <p>This page explains the {config.express.productName} service in plain language. It is a template that should be reviewed by a qualified professional before you rely on it.</p>
+
+      <h2>What you get</h2>
+      <p>The price is a one-time ${config.express.priceUsd}. {config.service.scope}</p>
+
+      <h2>What is not included</h2>
+      <p>{config.service.outOfScope}</p>
+
+      <h2>Turnaround</h2>
+      <p>We aim to finish {config.express.turnaroundText} after we receive the details and access we need from you. Delays caused by missing access, unavailable accounts or third-party outages can extend this.</p>
+
+      <h2>Access and security</h2>
+      <p>{config.service.accessMethods}</p>
+      <ul>
+        <li>Only share access through a collaborator, staff or invite system. Do not send passwords by email or chat.</li>
+        <li>We only use access for the job you paid for.</li>
+        <li>You can remove our access when the job is done, and we recommend you do.</li>
+      </ul>
+
+      <h2>After delivery</h2>
+      <p>{config.service.revisions}</p>
+
+      <h2>Refunds</h2>
+      <p>{config.service.refundPolicy}</p>
+
+      <h2>Your responsibilities</h2>
+      <ul>
+        <li>Make sure you have the right to give us access to the accounts involved.</li>
+        <li>Keep a backup of your site or store before we start if you can.</li>
+        <li>Tell us about any other tools that may conflict with the new install.</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>Questions? Email {config.supportEmail}.</p>
+      <p class="text-sm text-slate-500">Last updated: {config.legal.lastUpdated}. Operated by {config.legal.companyName}.</p>
+    </div>
+  </main>
+</Base>

@@ -1,0 +1,65 @@
+---
+import Zap from '@lucide/astro/icons/zap';
+import Check from '@lucide/astro/icons/check';
+import { config } from '../config';
+import { expressHref } from '../lib/site';
+
+interface Props {
+  toolName?: string;
+  platformName?: string;
+}
+const { toolName, platformName } = Astro.props;
+const forWhat = toolName && platformName ? `${toolName} on ${platformName}` : null;
+---
+
+<section class="rounded-xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-5 shadow-sm" aria-labelledby="express-heading">
+  <div class="flex items-center gap-2 text-sm font-semibold text-indigo-700">
+    <Zap size={16} aria-hidden="true" /> Done-for-you
+  </div>
+  <h2 id="express-heading" class="mt-1 text-lg font-bold text-slate-900">
+    {config.express.productName}
+  </h2>
+  {forWhat && <p class="mt-1 text-sm text-slate-600">Skip the steps. We set up {forWhat} for you.</p>}
+  <p class="mt-3 text-3xl font-extrabold text-slate-900">
+    ${config.express.priceUsd}
+    <span class="text-sm font-medium text-slate-500">one-time</span>
+  </p>
+  <ul class="mt-3 space-y-2 text-sm text-slate-700">
+    {
+      config.express.bullets.map((b) => (
+        <li class="flex gap-2">
+          <Check size={16} class="mt-0.5 shrink-0 text-emerald-600" aria-hidden="true" />
+          <span>{b}</span>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    config.badges.moneyBackGuarantee.enabled && (
+      <p class="mt-3 rounded-md bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-800">
+        {config.badges.moneyBackGuarantee.text}
+      </p>
+    )
+  }
+  {
+    expressHref ? (
+      <a
+        href={expressHref}
+        class="mt-4 block rounded-md bg-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+      >
+        Get Express Install: ${config.express.priceUsd}
+      </a>
+    ) : (
+      <span
+        aria-disabled="true"
+        class="mt-4 block cursor-not-allowed rounded-md bg-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-600"
+        title="Add your payment link in src/config.ts"
+      >
+        Express Install (payment link not set up yet)
+      </span>
+    )
+  }
+  <p class="mt-3 text-xs text-slate-500">
+    Secure checkout by {config.express.paymentProvider}. See the <a href="/service-terms/" class="underline">service terms</a>.
+  </p>
+</section>

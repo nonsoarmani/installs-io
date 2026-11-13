@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { config } from '../config';
+---
+
+<Base title="Terms of Use" description="Terms for using the installs.io website, its install guides and its affiliate links.">
+  <main id="main" class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Terms' }]} />
+    <h1 class="mt-6 text-3xl font-extrabold text-slate-900">Terms of Use</h1>
+    <div class="prose-lite text-slate-700">
+      <p>This is a starting-point template in plain language. Have a qualified professional review it before launch.</p>
+      <p class="text-sm text-slate-500">Last updated: {config.legal.lastUpdated}. Operated by {config.legal.companyName}.</p>
+
+      <h2>Guides are for information</h2>
+      <p>Our guides explain how to install tools. Software changes often, so menus and steps may differ from what you see. Each guide shows when it was last verified. Follow the vendor's own documentation if something does not match, and back up your site before making changes.</p>
+
+      <h2>No guarantees</h2>
+      <p>We do our best to keep guides accurate, but we cannot promise they will work on every site or setup. You use them at your own risk, and we are not responsible for loss caused by following them, to the extent the law allows.</p>
+
+      <h2>Affiliate links and sponsored placements</h2>
+      <p>{config.legal.affiliateDisclosure} "Recommended Setup Partner" cards are paid placements and are labelled as sponsored. They are not an endorsement of the partner's work.</p>
+
+      <h2>Paid services</h2>
+      <p>The Express Install service is covered by our <a href="/service-terms/">service terms</a>.</p>
+
+      <h2>Trademarks</h2>
+      <p>Product names and logos belong to their owners. We are not affiliated with or endorsed by them.</p>
+
+      <h2>Contact</h2>
+      <p>Email {config.supportEmail}. Governing law: {config.legal.country}.</p>
+    </div>
+  </main>
+</Base>

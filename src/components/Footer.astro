@@ -1,0 +1,42 @@
+---
+import { config, isTodo } from '../config';
+
+const year = new Date().getFullYear();
+const links = [
+  { href: '/platforms/', label: 'Platforms' },
+  { href: '/tools/', label: 'Tools' },
+  { href: '/request-a-guide/', label: 'Request a guide' },
+  { href: '/partners/', label: 'Become a partner' },
+  { href: '/service-terms/', label: 'Service terms' },
+  { href: '/privacy/', label: 'Privacy' },
+  { href: '/terms/', label: 'Terms' },
+];
+---
+
+<footer class="mt-16 border-t border-slate-200 bg-slate-50">
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <div class="flex flex-col gap-8 md:flex-row md:justify-between">
+      <div class="max-w-md">
+        <p class="text-lg font-bold text-slate-900">{config.siteName}</p>
+        <p class="mt-2 text-sm text-slate-600">{config.tagline}</p>
+        <p class="mt-4 text-sm text-slate-600" id="affiliate-disclosure">
+          <strong class="font-semibold text-slate-800">Disclosure:</strong>{' '}
+          {config.legal.affiliateDisclosure}
+        </p>
+      </div>
+      <nav aria-label="Footer" class="grid grid-cols-2 gap-x-10 gap-y-2 text-sm text-slate-600">
+        {links.map((l) => <a href={l.href} class="hover:text-slate-900 hover:underline">{l.label}</a>)}
+        {
+          !isTodo(config.supportEmail) && (
+            <a href={`mailto:${config.supportEmail}`} class="hover:text-slate-900 hover:underline">Contact</a>
+          )
+        }
+      </nav>
+    </div>
+    <p class="mt-8 text-xs text-slate-500">
+      &copy; {year}{' '}
+      {isTodo(config.legal.companyName) ? config.siteName : config.legal.companyName}. All product names and logos{' '}
+      belong to their owners. {config.siteName} is not affiliated with or endorsed by the tools or platforms we write about.
+    </p>
+  </div>
+</footer>
