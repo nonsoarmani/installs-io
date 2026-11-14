@@ -2,6 +2,9 @@ import type { Guide } from './types';
 import { gohighlevelOnWordpress } from './guides/gohighlevel-on-wordpress';
 import { gohighlevelOnShopify } from './guides/gohighlevel-on-shopify';
 import { gohighlevelOnWebflow } from './guides/gohighlevel-on-webflow';
+import { hubspotOnWordpress } from './guides/hubspot-on-wordpress';
+import { hubspotOnShopify } from './guides/hubspot-on-shopify';
+import { hubspotOnWebflow } from './guides/hubspot-on-webflow';
 import { klaviyoOnShopify } from './guides/klaviyo-on-shopify';
 import { klaviyoOnWebflow } from './guides/klaviyo-on-webflow';
 import { klaviyoOnWordpress } from './guides/klaviyo-on-wordpress';
@@ -25,6 +28,9 @@ export const guides: Guide[] = [
   gohighlevelOnWordpress,
   gohighlevelOnShopify,
   gohighlevelOnWebflow,
+  hubspotOnWordpress,
+  hubspotOnShopify,
+  hubspotOnWebflow,
   klaviyoOnShopify,
   klaviyoOnWebflow,
   klaviyoOnWordpress,
