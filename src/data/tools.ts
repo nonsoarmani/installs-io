@@ -1,8 +1,21 @@
 import type { Tool } from './types';
 
-// NOTE: affiliateUrl is the plain website for now.
-// TODO: replace with your real affiliate link once you join each program.
 export const tools: Tool[] = [
+  {
+    id: 'gohighlevel',
+    slug: 'gohighlevel',
+    name: 'GoHighLevel',
+    category: 'Email & CRM',
+    shortDescription: 'All-in-one CRM, live chat widget, booking calendar, and forms.',
+    longDescription:
+      'GoHighLevel combines a CRM, live SMS/web chat widget, appointment booking calendar, and lead capture forms in one platform. These guides show how to embed GoHighLevel widgets onto your existing website.',
+    logo: '/logos/gohighlevel.svg',
+    websiteUrl: 'https://gohighlevel.com',
+    affiliateUrl: 'https://www.gohighlevel.com/7658a9?fp_ref=nonso-4d796d',
+    affiliateDisclosure: true,
+    affiliateCtaText: "Don't have a GoHighLevel account yet? Start a free 14-day trial",
+    officialDocsUrl: 'https://gohighlevel.com',
+  },
   {
     id: 'klaviyo',
     slug: 'klaviyo',
@@ -13,7 +26,7 @@ export const tools: Tool[] = [
       'Klaviyo is an email and SMS marketing platform that is popular with online stores. These guides show you how to connect it to your site so it can collect subscribers and track shopping activity.',
     logo: '/logos/klaviyo.svg',
     websiteUrl: 'https://www.klaviyo.com',
-    affiliateUrl: 'https://www.klaviyo.com', // TODO: affiliate link
+    affiliateUrl: 'https://www.klaviyo.com',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a Klaviyo account yet? Start a free trial",
     officialDocsUrl: 'https://help.klaviyo.com',
@@ -28,7 +41,7 @@ export const tools: Tool[] = [
       'The Meta Conversions API sends purchase and lead events straight from your server to Meta, so your Facebook and Instagram ad reporting stays accurate even when browsers block the pixel.',
     logo: '/logos/meta.svg',
     websiteUrl: 'https://www.facebook.com/business',
-    affiliateUrl: 'https://www.facebook.com/business', // no affiliate program; plain link
+    affiliateUrl: 'https://www.facebook.com/business',
     affiliateDisclosure: false,
     affiliateCtaText: 'Need a Meta Business account? Create one here',
     officialDocsUrl: 'https://developers.facebook.com/docs/marketing-api/conversions-api',
@@ -43,10 +56,55 @@ export const tools: Tool[] = [
       "Google Analytics 4 (GA4) is Google's free analytics tool. It shows how many people visit your site, where they come from and what they do. These guides cover connecting it to your site.",
     logo: '/logos/ga4.svg',
     websiteUrl: 'https://analytics.google.com',
-    affiliateUrl: 'https://analytics.google.com', // free product; plain link
+    affiliateUrl: 'https://analytics.google.com',
     affiliateDisclosure: false,
     affiliateCtaText: 'Need a Google Analytics account? Create one free',
     officialDocsUrl: 'https://support.google.com/analytics',
+  },
+  {
+    id: 'gtm',
+    slug: 'google-tag-manager',
+    name: 'Google Tag Manager',
+    category: 'Analytics & Pixels',
+    shortDescription: 'Manage all your marketing tags and pixels in one container.',
+    longDescription:
+      'Google Tag Manager (GTM) lets you deploy and update analytics tags, ad pixels, and conversion scripts on your website without editing theme code every time.',
+    logo: '/logos/gtm.svg',
+    websiteUrl: 'https://tagmanager.google.com',
+    affiliateUrl: 'https://tagmanager.google.com',
+    affiliateDisclosure: false,
+    affiliateCtaText: 'Need a Google Tag Manager account? Create one free',
+    officialDocsUrl: 'https://google.com',
+  },
+  {
+    id: 'hotjar',
+    slug: 'hotjar',
+    name: 'Hotjar',
+    category: 'Product Analytics',
+    shortDescription: 'Visual heatmaps, session recordings, and user feedback.',
+    longDescription:
+      'Hotjar shows you where visitors click, scroll, and drop off on your website using visual heatmaps and real user session recordings.',
+    logo: '/logos/hotjar.svg',
+    websiteUrl: 'https://hotjar.com',
+    affiliateUrl: 'https://hotjar.com',
+    affiliateDisclosure: true,
+    affiliateCtaText: "Don't have a Hotjar account yet? Start free",
+    officialDocsUrl: 'https://hotjar.com',
+  },
+  {
+    id: 'hubspot',
+    slug: 'hubspot',
+    name: 'HubSpot',
+    category: 'Email & CRM',
+    shortDescription: 'All-in-one CRM, lead capture forms, and live chat.',
+    longDescription:
+      'HubSpot connects your website forms, live chat, and visitor tracking directly to a free CRM so you can capture and nurture leads automatically.',
+    logo: '/logos/hubspot.svg',
+    websiteUrl: 'https://hubspot.com',
+    affiliateUrl: 'https://hubspot.com',
+    affiliateDisclosure: true,
+    affiliateCtaText: "Don't have a HubSpot account yet? Start free",
+    officialDocsUrl: 'https://hubspot.com',
   },
   {
     id: 'crisp',
@@ -58,10 +116,40 @@ export const tools: Tool[] = [
       'Crisp adds a live chat bubble to your website and gives your team a shared inbox for answering customers. These guides show how to get the chat widget onto your site.',
     logo: '/logos/crisp.svg',
     websiteUrl: 'https://crisp.chat',
-    affiliateUrl: 'https://crisp.chat', // TODO: affiliate link if one exists
+    affiliateUrl: 'https://crisp.chat',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a Crisp account yet? Try it free",
     officialDocsUrl: 'https://help.crisp.chat',
+  },
+  {
+    id: 'tidio',
+    slug: 'tidio',
+    name: 'Tidio',
+    category: 'Live Chat & Support',
+    shortDescription: 'AI-powered live chat and helpdesk for ecommerce and websites.',
+    longDescription:
+      'Tidio combines live chat, AI support agents, and visitor tracking so online stores and businesses can convert visitors and answer questions 24/7.',
+    logo: '/logos/tidio.svg',
+    websiteUrl: 'https://tidio.com',
+    affiliateUrl: 'https://tidio.com',
+    affiliateDisclosure: true,
+    affiliateCtaText: "Don't have a Tidio account yet? Try it free",
+    officialDocsUrl: 'https://tidio.com',
+  },
+  {
+    id: 'brevo',
+    slug: 'brevo',
+    name: 'Brevo',
+    category: 'Email & CRM',
+    shortDescription: 'Email marketing, SMS automation, and CRM for growing sites.',
+    longDescription:
+      'Brevo (formerly Sendinblue) helps websites and online stores capture email subscribers, automate follow-ups, and sync customer data.',
+    logo: '/logos/brevo.svg',
+    websiteUrl: 'https://brevo.com',
+    affiliateUrl: 'https://brevo.com',
+    affiliateDisclosure: true,
+    affiliateCtaText: "Don't have a Brevo account yet? Create a free account",
+    officialDocsUrl: 'https://brevo.com',
   },
   {
     id: 'posthog',
@@ -73,7 +161,7 @@ export const tools: Tool[] = [
       'PostHog is a product analytics tool that records what people do on your site, including funnels, session replays and feature flags. These guides show how to connect it to your site.',
     logo: '/logos/posthog.svg',
     websiteUrl: 'https://posthog.com',
-    affiliateUrl: 'https://posthog.com', // TODO: affiliate link if one exists
+    affiliateUrl: 'https://posthog.com',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a PostHog account yet? Start free",
     officialDocsUrl: 'https://posthog.com/docs',
