@@ -11,6 +11,9 @@ import { metaConversionsApiOnWordpress } from './guides/meta-conversions-api-on-
 import { googleAnalytics4OnShopify } from './guides/google-analytics-4-on-shopify';
 import { googleAnalytics4OnWebflow } from './guides/google-analytics-4-on-webflow';
 import { googleAnalytics4OnWordpress } from './guides/google-analytics-4-on-wordpress';
+import { googleTagManagerOnShopify } from './guides/google-tag-manager-on-shopify';
+import { googleTagManagerOnWebflow } from './guides/google-tag-manager-on-webflow';
+import { googleTagManagerOnWordpress } from './guides/google-tag-manager-on-wordpress';
 import { crispOnShopify } from './guides/crisp-on-shopify';
 import { crispOnWebflow } from './guides/crisp-on-webflow';
 import { crispOnWordpress } from './guides/crisp-on-wordpress';
@@ -31,6 +34,9 @@ export const guides: Guide[] = [
   googleAnalytics4OnShopify,
   googleAnalytics4OnWebflow,
   googleAnalytics4OnWordpress,
+  googleTagManagerOnShopify,
+  googleTagManagerOnWebflow,
+  googleTagManagerOnWordpress,
   crispOnShopify,
   crispOnWebflow,
   crispOnWordpress,
