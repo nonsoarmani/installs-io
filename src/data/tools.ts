@@ -153,7 +153,7 @@ export const tools: Tool[] = [
       'Brevo (formerly Sendinblue) helps websites and online stores capture email subscribers, automate follow-ups, and sync customer data.',
     logo: badge('#0B996E', 'B', 18),
     websiteUrl: 'https://brevo.com',
-    affiliateUrl: 'https://brevo.com',
+    affiliateUrl: 'https://dash.partnerstack.com/invite/38b0783e576845b1988201071ea7785f',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a Brevo account yet? Create a free account",
     officialDocsUrl: 'https://brevo.com',
