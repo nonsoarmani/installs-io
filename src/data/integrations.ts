@@ -11,6 +11,9 @@ import { hotjarOnWordpress } from './guides/hotjar-on-wordpress';
 import { tidioOnShopify } from './guides/tidio-on-shopify';
 import { tidioOnWordpress } from './guides/tidio-on-wordpress';
 import { tidioOnWebflow } from './guides/tidio-on-webflow';
+import { brevoOnWordpress } from './guides/brevo-on-wordpress';
+import { brevoOnShopify } from './guides/brevo-on-shopify';
+import { brevoOnWebflow } from './guides/brevo-on-webflow';
 import { klaviyoOnShopify } from './guides/klaviyo-on-shopify';
 import { klaviyoOnWebflow } from './guides/klaviyo-on-webflow';
 import { klaviyoOnWordpress } from './guides/klaviyo-on-wordpress';
@@ -43,6 +46,9 @@ export const guides: Guide[] = [
   tidioOnShopify,
   tidioOnWordpress,
   tidioOnWebflow,
+  brevoOnWordpress,
+  brevoOnShopify,
+  brevoOnWebflow,
   klaviyoOnShopify,
   klaviyoOnWebflow,
   klaviyoOnWordpress,
