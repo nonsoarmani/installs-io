@@ -5,6 +5,9 @@ import { gohighlevelOnWebflow } from './guides/gohighlevel-on-webflow';
 import { hubspotOnWordpress } from './guides/hubspot-on-wordpress';
 import { hubspotOnShopify } from './guides/hubspot-on-shopify';
 import { hubspotOnWebflow } from './guides/hubspot-on-webflow';
+import { hotjarOnShopify } from './guides/hotjar-on-shopify';
+import { hotjarOnWebflow } from './guides/hotjar-on-webflow';
+import { hotjarOnWordpress } from './guides/hotjar-on-wordpress';
 import { klaviyoOnShopify } from './guides/klaviyo-on-shopify';
 import { klaviyoOnWebflow } from './guides/klaviyo-on-webflow';
 import { klaviyoOnWordpress } from './guides/klaviyo-on-wordpress';
@@ -31,6 +34,9 @@ export const guides: Guide[] = [
   hubspotOnWordpress,
   hubspotOnShopify,
   hubspotOnWebflow,
+  hotjarOnShopify,
+  hotjarOnWebflow,
+  hotjarOnWordpress,
   klaviyoOnShopify,
   klaviyoOnWebflow,
   klaviyoOnWordpress,
