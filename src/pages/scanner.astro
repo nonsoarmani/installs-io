@@ -165,7 +165,8 @@ const schemaLd = {
       const missingList = document.getElementById('missing-list');
       missingList.innerHTML = data.missing
         .map((t) => {
-          const href = platId ? `/guides/${t.slug}-on-${platId}/` : `/tools/${t.slug}/`;
+          const href = platId ? `/install/${t.slug}-on-${platId}/` : `/tools/${t.slug}/`;
+
           const label = platId ? `Install on ${data.platform.name} &rarr;` : 'Install guide &rarr;';
           return `
             <li class="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
