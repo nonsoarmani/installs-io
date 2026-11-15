@@ -9,7 +9,7 @@ export const tools: Tool[] = [
     shortDescription: 'All-in-one CRM, live chat widget, booking calendar, and forms.',
     longDescription:
       'GoHighLevel combines a CRM, live SMS/web chat widget, appointment booking calendar, and lead capture forms in one platform. These guides show how to embed GoHighLevel widgets onto your existing website.',
-    logo: '/logos/gohighlevel.svg',
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231868DB'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='14'%3EGHL%3C/text%3E%3C/svg%3E",
     websiteUrl: 'https://gohighlevel.com',
     affiliateUrl: 'https://www.gohighlevel.com/7658a9?fp_ref=nonso-4d796d',
     affiliateDisclosure: true,
@@ -69,7 +69,7 @@ export const tools: Tool[] = [
     shortDescription: 'Manage all your marketing tags and pixels in one container.',
     longDescription:
       'Google Tag Manager (GTM) lets you deploy and update analytics tags, ad pixels, and conversion scripts on your website without editing theme code every time.',
-    logo: '/logos/gtm.svg',
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23246FDB'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='13'%3EGTM%3C/text%3E%3C/svg%3E",
     websiteUrl: 'https://tagmanager.google.com',
     affiliateUrl: 'https://tagmanager.google.com',
     affiliateDisclosure: false,
@@ -84,7 +84,7 @@ export const tools: Tool[] = [
     shortDescription: 'Visual heatmaps, session recordings, and user feedback.',
     longDescription:
       'Hotjar shows you where visitors click, scroll, and drop off on your website using visual heatmaps and real user session recordings.',
-    logo: '/logos/hotjar.svg',
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23FF3C00'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='16'%3EHJ%3C/text%3E%3C/svg%3E",
     websiteUrl: 'https://hotjar.com',
     affiliateUrl: 'https://hotjar.com',
     affiliateDisclosure: true,
@@ -99,7 +99,7 @@ export const tools: Tool[] = [
     shortDescription: 'All-in-one CRM, lead capture forms, and live chat.',
     longDescription:
       'HubSpot connects your website forms, live chat, and visitor tracking directly to a free CRM so you can capture and nurture leads automatically.',
-    logo: '/logos/hubspot.svg',
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23FF7A59'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='18'%3EH%3C/text%3E%3C/svg%3E",
     websiteUrl: 'https://hubspot.com',
     affiliateUrl: 'https://hubspot.com',
     affiliateDisclosure: true,
@@ -144,7 +144,7 @@ export const tools: Tool[] = [
     shortDescription: 'Email marketing, SMS automation, and CRM for growing sites.',
     longDescription:
       'Brevo (formerly Sendinblue) helps websites and online stores capture email subscribers, automate follow-ups, and sync customer data.',
-    logo: '/logos/brevo.svg',
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230B996E'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='18'%3EB%3C/text%3E%3C/svg%3E",
     websiteUrl: 'https://brevo.com',
     affiliateUrl: 'https://brevo.com',
     affiliateDisclosure: true,
