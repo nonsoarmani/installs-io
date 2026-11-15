@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+import Search from '@lucide/astro/icons/search';
+import CheckCircle2 from '@lucide/astro/icons/check-circle-2';
+import AlertCircle from '@lucide/astro/icons/alert-circle';
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import Sparkles from '@lucide/astro/icons/sparkles';
+import { config } from '../config';
+import { expressHref, absoluteUrl } from '../lib/site';
+
+const schemaLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Website Tracking & Pixel Scanner',
+  url: absoluteUrl('/scanner/'),
+  applicationCategory: 'BusinessApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+---
+
+<Base
+  title={`Free Website Tracking & Pixel Scanner | ${config.siteName}`}
+  description="Scan any website in 3 seconds to detect installed analytics, pixels, CRM, and live chat scripts—and get step-by-step install guides for missing tools."
+  jsonLd={[schemaLd]}
+>
+  <main id="main" class="flex-1">
+    <section class="bg-gradient-to-b from-indigo-50 via-white to-white">
+      <div class="mx-auto max-w-4xl px-4 pb-10 pt-14 text-center sm:pt-20">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-800">
+          <Sparkles size={14} aria-hidden="true" /> Free Stack & Pixel Checker
+        </span>
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          Website Tracking & Pixel Scanner
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+          Enter any public website URL to see which analytics, ad pixels, CRM, and live chat tools are installed—and get exact step-by-step guides for anything missing.
+        </p>
+
+        <form id="scan-form" class="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
+          <input
+            id="scan-url"
+            type="text"
+            required
+            placeholder="e.g. mystore.com"
+            aria-label="Website URL to scan"
+            class="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          />
+          <button
+            id="scan-btn"
+            type="submit"
+            class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-60"
+          >
+            <Search size={18} aria-hidden="true" />
+            <span>Scan My Stack</span>
+          </button>
+        </form>
+
+        <p id="scan-error" class="mx-auto mt-4 hidden max-w-xl rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"></p>
+      </div>
+    </section>
+
+    <section id="scan-results" class="mx-auto hidden max-w-5xl px-4 pb-16">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Scan Report For</p>
+            <h2 id="res-domain" class="text-2xl font-bold text-slate-900"></h2>
+          </div>
+          <div id="res-platform-badge" class="rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-semibold text-indigo-800"></div>
+        </div>
+
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="flex items-center gap-2 text-lg font-bold text-emerald-800">
+              <CheckCircle2 size={20} class="text-emerald-600" />
+              Detected on Site (<span id="detected-count">0</span>)
+            </h3>
+            <ul id="detected-list" class="mt-4 space-y-3"></ul>
+          </div>
+
+          <div>
+            <h3 class="flex items-center gap-2 text-lg font-bold text-slate-900">
+              <AlertCircle size={20} class="text-amber-500" />
+              Not Detected / Missing (<span id="missing-count">0</span>)
+            </h3>
+            <ul id="missing-list" class="mt-4 space-y-3"></ul>
+          </div>
+        </div>
+
+        {expressHref && (
+          <div class="mt-10 flex flex-col items-start justify-between gap-4 rounded-xl bg-slate-900 p-6 text-white sm:flex-row sm:items-center">
+            <div>
+              <p class="font-bold text-lg">Want an expert to install or fix your tracking?</p>
+              <p class="mt-1 text-sm text-slate-300">
+                We configure GA4, GTM, Meta CAPI, GoHighLevel, or any tool {config.express.turnaroundText} for a flat ${config.express.priceUsd}.
+              </p>
+            </div>
+            <a
+              href={expressHref}
+              class="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-indigo-500 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-400"
+            >
+              Get Express Setup <ArrowRight size={16} />
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+</Base>
+
+<script define:vars={{ priceUsd: config.express.priceUsd }}>
+  const form = document.getElementById('scan-form');
+  const input = document.getElementById('scan-url');
+  const btn = document.getElementById('scan-btn');
+  const errEl = document.getElementById('scan-error');
+  const resultsEl = document.getElementById('scan-results');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const url = input.value.trim();
+    if (!url) return;
+
+    errEl.classList.add('hidden');
+    resultsEl.classList.add('hidden');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Scanning...';
+
+    try {
+      const res = await fetch('/api/scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Unable to scan this website.');
+      }
+
+      document.getElementById('res-domain').textContent = data.domain;
+      const platId = data.platform?.id || null;
+      document.getElementById('res-platform-badge').textContent = data.platform
+        ? `Platform: ${data.platform.name}`
+        : 'Platform: Custom / Other';
+
+      document.getElementById('detected-count').textContent = data.detected.length;
+      document.getElementById('missing-count').textContent = data.missing.length;
+
+      const detectedList = document.getElementById('detected-list');
+      detectedList.innerHTML = data.detected.length
+        ? data.detected
+            .map(
+              (t) => `
+              <li class="flex items-center justify-between rounded-lg border border-emerald-200 bg-emerald-50/60 px-4 py-3">
+                <div>
+                  <p class="font-semibold text-slate-900">${t.name}</p>
+                  <p class="text-xs text-slate-600">${t.category}</p>
+                </div>
+                <a href="/tools/${t.slug}/" class="text-xs font-semibold text-emerald-800 hover:underline">View tool &rarr;</a>
+              </li>`
+            )
+            .join('')
+        : '<li class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">No common MarTech scripts detected in initial HTML.</li>';
+
+      const missingList = document.getElementById('missing-list');
+      missingList.innerHTML = data.missing
+        .map((t) => {
+          const href = platId ? `/guides/${t.slug}-on-${platId}/` : `/tools/${t.slug}/`;
+          const label = platId ? `Install on ${data.platform.name} &rarr;` : 'Install guide &rarr;';
+          return `
+            <li class="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+              <div>
+                <p class="font-semibold text-slate-900">${t.name}</p>
+                <p class="text-xs text-slate-500">${t.category}</p>
+              </div>
+              <a href="${href}" class="rounded-md bg-white px-3 py-1.5 text-xs font-semibold text-indigo-700 shadow-sm ring-1 ring-slate-200 hover:bg-indigo-50">${label}</a>
+            </li>`;
+        })
+        .join('');
+
+      resultsEl.classList.remove('hidden');
+    } catch (err) {
+      errEl.textContent = err.message || 'Something went wrong while scanning.';
+      errEl.classList.remove('hidden');
+    } finally {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Scan My Stack';
+    }
+  });
+</script>
