@@ -1,5 +1,12 @@
 import type { Tool } from './types';
 
+const badge = (bg: string, label: string, size = 16) =>
+  `data:image/svg+xml;utf8,` +
+  encodeURIComponent(
+    `<svg xmlns="http://` +
+      `www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="${bg}"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="700" font-size="${size}">${label}</text></svg>`
+  );
+
 export const tools: Tool[] = [
   {
     id: 'gohighlevel',
@@ -9,9 +16,9 @@ export const tools: Tool[] = [
     shortDescription: 'All-in-one CRM, live chat widget, booking calendar, and forms.',
     longDescription:
       'GoHighLevel combines a CRM, live SMS/web chat widget, appointment booking calendar, and lead capture forms in one platform. These guides show how to embed GoHighLevel widgets onto your existing website.',
-    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231868DB'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='14'%3EGHL%3C/text%3E%3C/svg%3E",
+    logo: badge('#1868DB', 'GHL', 14),
     websiteUrl: 'https://gohighlevel.com',
-    affiliateUrl: 'https://www.gohighlevel.com/7658a9?fp_ref=nonso-4d796d',
+    affiliateUrl: 'https://gohighlevel.com',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a GoHighLevel account yet? Start a free 14-day trial",
     officialDocsUrl: 'https://gohighlevel.com',
@@ -25,11 +32,11 @@ export const tools: Tool[] = [
     longDescription:
       'Klaviyo is an email and SMS marketing platform that is popular with online stores. These guides show you how to connect it to your site so it can collect subscribers and track shopping activity.',
     logo: '/logos/klaviyo.svg',
-    websiteUrl: 'https://www.klaviyo.com',
-    affiliateUrl: 'https://www.klaviyo.com',
+    websiteUrl: 'https://klaviyo.com',
+    affiliateUrl: 'https://klaviyo.com',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a Klaviyo account yet? Start a free trial",
-    officialDocsUrl: 'https://help.klaviyo.com',
+    officialDocsUrl: 'https://klaviyo.com',
   },
   {
     id: 'meta-capi',
@@ -40,11 +47,11 @@ export const tools: Tool[] = [
     longDescription:
       'The Meta Conversions API sends purchase and lead events straight from your server to Meta, so your Facebook and Instagram ad reporting stays accurate even when browsers block the pixel.',
     logo: '/logos/meta.svg',
-    websiteUrl: 'https://www.facebook.com/business',
-    affiliateUrl: 'https://www.facebook.com/business',
+    websiteUrl: 'https://facebook.com',
+    affiliateUrl: 'https://facebook.com',
     affiliateDisclosure: false,
     affiliateCtaText: 'Need a Meta Business account? Create one here',
-    officialDocsUrl: 'https://developers.facebook.com/docs/marketing-api/conversions-api',
+    officialDocsUrl: 'https://facebook.com',
   },
   {
     id: 'ga4',
@@ -55,11 +62,11 @@ export const tools: Tool[] = [
     longDescription:
       "Google Analytics 4 (GA4) is Google's free analytics tool. It shows how many people visit your site, where they come from and what they do. These guides cover connecting it to your site.",
     logo: '/logos/ga4.svg',
-    websiteUrl: 'https://analytics.google.com',
-    affiliateUrl: 'https://analytics.google.com',
+    websiteUrl: 'https://google.com',
+    affiliateUrl: 'https://google.com',
     affiliateDisclosure: false,
     affiliateCtaText: 'Need a Google Analytics account? Create one free',
-    officialDocsUrl: 'https://support.google.com/analytics',
+    officialDocsUrl: 'https://google.com',
   },
   {
     id: 'gtm',
@@ -69,9 +76,9 @@ export const tools: Tool[] = [
     shortDescription: 'Manage all your marketing tags and pixels in one container.',
     longDescription:
       'Google Tag Manager (GTM) lets you deploy and update analytics tags, ad pixels, and conversion scripts on your website without editing theme code every time.',
-    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23246FDB'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='13'%3EGTM%3C/text%3E%3C/svg%3E",
-    websiteUrl: 'https://tagmanager.google.com',
-    affiliateUrl: 'https://tagmanager.google.com',
+    logo: badge('#246FDB', 'GTM', 13),
+    websiteUrl: 'https://google.com',
+    affiliateUrl: 'https://google.com',
     affiliateDisclosure: false,
     affiliateCtaText: 'Need a Google Tag Manager account? Create one free',
     officialDocsUrl: 'https://google.com',
@@ -84,7 +91,7 @@ export const tools: Tool[] = [
     shortDescription: 'Visual heatmaps, session recordings, and user feedback.',
     longDescription:
       'Hotjar shows you where visitors click, scroll, and drop off on your website using visual heatmaps and real user session recordings.',
-    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23FF3C00'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='16'%3EHJ%3C/text%3E%3C/svg%3E",
+    logo: badge('#FF3C00', 'HJ', 16),
     websiteUrl: 'https://hotjar.com',
     affiliateUrl: 'https://hotjar.com',
     affiliateDisclosure: true,
@@ -99,7 +106,7 @@ export const tools: Tool[] = [
     shortDescription: 'All-in-one CRM, lead capture forms, and live chat.',
     longDescription:
       'HubSpot connects your website forms, live chat, and visitor tracking directly to a free CRM so you can capture and nurture leads automatically.',
-    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23FF7A59'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='18'%3EH%3C/text%3E%3C/svg%3E",
+    logo: badge('#FF7A59', 'H', 18),
     websiteUrl: 'https://hubspot.com',
     affiliateUrl: 'https://hubspot.com',
     affiliateDisclosure: true,
@@ -119,7 +126,7 @@ export const tools: Tool[] = [
     affiliateUrl: 'https://crisp.chat',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a Crisp account yet? Try it free",
-    officialDocsUrl: 'https://help.crisp.chat',
+    officialDocsUrl: 'https://crisp.chat',
   },
   {
     id: 'tidio',
@@ -129,7 +136,7 @@ export const tools: Tool[] = [
     shortDescription: 'AI-powered live chat and helpdesk for ecommerce and websites.',
     longDescription:
       'Tidio combines live chat, AI support agents, and visitor tracking so online stores and businesses can convert visitors and answer questions 24/7.',
-    logo: '/logos/tidio.svg',
+    logo: badge('#0566FF', 'T', 18),
     websiteUrl: 'https://tidio.com',
     affiliateUrl: 'https://tidio.com',
     affiliateDisclosure: true,
@@ -144,7 +151,7 @@ export const tools: Tool[] = [
     shortDescription: 'Email marketing, SMS automation, and CRM for growing sites.',
     longDescription:
       'Brevo (formerly Sendinblue) helps websites and online stores capture email subscribers, automate follow-ups, and sync customer data.',
-    logo: "data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230B996E'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='18'%3EB%3C/text%3E%3C/svg%3E",
+    logo: badge('#0B996E', 'B', 18),
     websiteUrl: 'https://brevo.com',
     affiliateUrl: 'https://brevo.com',
     affiliateDisclosure: true,
@@ -164,6 +171,6 @@ export const tools: Tool[] = [
     affiliateUrl: 'https://posthog.com',
     affiliateDisclosure: true,
     affiliateCtaText: "Don't have a PostHog account yet? Start free",
-    officialDocsUrl: 'https://posthog.com/docs',
+    officialDocsUrl: 'https://posthog.com',
   },
 ];
