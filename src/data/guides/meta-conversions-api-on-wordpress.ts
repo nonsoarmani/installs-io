@@ -5,9 +5,9 @@ export const metaConversionsApiOnWordpress: Guide = {
   toolId: 'meta-capi',
   platformId: 'wordpress',
   status: 'published',
-  title: 'How to Install Meta Pixel & Conversions API on WordPress',
+  title: 'How to Install Meta Conversions API on WordPress & WooCommerce',
   metaDescription:
-    'Connect Meta Pixel and server-side Conversions API (CAPI) to WordPress using the official Meta for WordPress plugin to track leads and WooCommerce sales.',
+    'Connect Facebook Meta Pixel and server-side Conversions API (CAPI) to WordPress and WooCommerce to track leads and sales accurately.',
   whoItsFor:
     'WordPress site owners, lead-gen businesses, and WooCommerce stores running Facebook and Instagram ads that need reliable server-side conversion tracking.',
   whatYouGet:
@@ -94,5 +94,5 @@ export const metaConversionsApiOnWordpress: Guide = {
     'google-analytics-4-on-wordpress',
     'crisp-on-wordpress',
   ],
-  lastVerified: '2026-11-13',
+  lastVerified: '2026-11-16',
 };

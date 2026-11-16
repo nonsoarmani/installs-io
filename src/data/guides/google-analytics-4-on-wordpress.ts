@@ -5,11 +5,11 @@ export const googleAnalytics4OnWordpress: Guide = {
   toolId: 'ga4',
   platformId: 'wordpress',
   status: 'published',
-  title: 'How to Install Google Analytics 4 on WordPress (Site Kit)',
+  title: 'How to Install Google Analytics 4 on WordPress & WooCommerce',
   metaDescription:
-    "Add Google Analytics 4 to WordPress with Google's Site Kit plugin: install it, connect your Google account, link GA4 and check live data.",
+    "Add Google Analytics 4 to WordPress and WooCommerce with Google's Site Kit plugin: install it, connect your Google account, and check live data.",
   whoItsFor:
-    'WordPress site owners and bloggers who want traffic reports in Google Analytics 4 without editing theme files.',
+    'WordPress site owners, bloggers, and WooCommerce stores that want traffic reports in Google Analytics 4 without editing theme files.',
   whatYouGet:
     'GA4 tracking on your WordPress site through the official Site Kit plugin, with your traffic reports available in your Google Analytics account.',
   difficulty: 'Beginner',
@@ -94,5 +94,5 @@ export const googleAnalytics4OnWordpress: Guide = {
     },
   ],
   relatedSlugs: ['google-analytics-4-on-shopify', 'google-analytics-4-on-webflow', 'meta-conversions-api-on-wordpress'],
-  lastVerified: '2026-11-13',
+  lastVerified: '2026-11-16',
 };
